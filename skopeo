@@ -1,0 +1,8 @@
+IMPORTANT
+The build process is not intended to take longer than 5 minutes to complete. During testing of this exercise, much longer build times were reported.
+
+If your build is not complete after five minutes, then press Ctrl+C to exit the build process. Use the following command to copy a prebuilt Nexus image directly to your personal Quay.io account, and skip the build process:
+
+[student@workstation nexus3]$ skopeo copy --format v2s1 \
+docker://quay.io/redhattraining/nexus3:latest \
+docker://quay.io/${RHT_OCP4_QUAY_USER}/nexus3
