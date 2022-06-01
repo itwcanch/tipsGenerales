@@ -1,0 +1,2 @@
+# tipsGenerales
+Tips Generales
