@@ -1,0 +1,9 @@
+Table 1.2. Table of Common grep Options
+
+Option	Function
+-i	Use the regular expression provided but do not enforce case sensitivity (run case-insensitive).
+-v	Only display lines that do not contain matches to the regular expression.
+-r	Apply the search for data matching the regular expression recursively to a group of files or directories.
+-A NUMBER	Display NUMBER of lines after the regular expression match.
+-B NUMBER	Display NUMBER of lines before the regular expression match.
+-e	With multiple -e options used, multiple regular expressions can be supplied and will be used with a logical OR.
