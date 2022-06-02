@@ -1,0 +1,25 @@
+String Comparison in bash
+The general form of a string comparison is string1 operator string2. The following are available:
+
+Operator	Purpose
+== (also =)	String equality
+!=	String inequality
+<	String lexicographic comparison (before)
+>	String lexicographic comparison (after)
+=~	String regular expression match
+String Tests in bash
+The general form of string tests is -operator "string". The following are available:
+
+Operator	Purpose
+-z "string"	String has zero length
+-n "string"	String has non-zero length
+Integer Comparison in bash
+The general form of integer comparisons is int1 -operator int2. The following are available:
+
+Operator	Purpose
+-eq	Integer equality
+-ne	Integer inequality
+-lt	Integer less than
+-le	Integer less than or equal to
+-gt	Integer greater than
+-ge	Integer greater than or equal to
