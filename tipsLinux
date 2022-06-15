@@ -29,4 +29,47 @@ echo "servera.lab.example.com:/share /local-share nfs rw,sync 0 0" >> /etc/fstab
 mount /local-share
 
 **********************************************************************************************************
+Create a new 512 MiB partition on the /dev/vdc disk to be used as swap space. 
+This swap space must be automatically activated at boot time.
+
+parted /dev/vdc mklabel msdos
+parted /dev/vdc mkpart primary linux-swap 1MiB 513MiB
+
+mkswap /dev/vdc1
+
+lsblk -o UUID /dev/vdc1
+
+echo "UUID=xxxxx swap swap defaults 0 0" >> /etc/fstab
+
+********************************************************************************************************
+groupadd production
+for i in 1 2 3 4; do useradd -G production production$i;donde
+
+********************************************************************************************************
+Configure your system so that it uses a new directory called /run/volatile to store temporary files. 
+Files in this directory should be subject to time based cleanup if they are not accessed for more than 30 seconds. 
+The octal permissions for the directory must be 0700. Make sure that you use the /etc/tmpfiles.d/volatile.conf file to configure the time based cleanup for the files in /run/volatile.
+
+echo "d /run/volatile 0700 root root 30s" >> /etc/tmpfiles.d/volatile.conf 
+
+systemd-tmpfiles --create /etc/tmpfiles.d/volatile.conf 
+
+*****************************************************************************************************
+
+Create a new directory called /webcontent. Both the owner and group owner of the directory should be root. 
+The group members of production should be able to read and write to this directory. 
+The production1 user should only be able to read this directory. 
+These permissions should apply to all new files and directories created under the /webcontent directory.
+
+mkdir /webcontent
+getfacl /webcontent
+
+setfacl -m u:production1:rx /webcontent
+setfacl -m g:production:rwx /webcontent
+
+setfacl -m d:u:production1:rx /webcontent
+setfacl -m d:g:production:rwx /webcontent
+
+
+
 
