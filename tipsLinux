@@ -71,6 +71,12 @@ setfacl -m g:production:rwx /webcontent
 setfacl -m d:u:production1:rx /webcontent
 setfacl -m d:g:production:rwx /webcontent
 
+******************************************************************************************************
+ssh-keygen
+ssh-copy-id student@servera
+ssh student@servera
+
+
 
 
 
