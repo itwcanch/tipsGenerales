@@ -19,3 +19,14 @@ lsblk
    lsblk -o UUID /dev/extra_storage/vol_home
    echo "UUID=xxxx /home-directories  xfs defaults 0 0" >> /etc/fstab
    mount -a
+
+***********************************************************************************************************
+Ensure that the network file system called /share is persistently mounted on /local-share across reboot. 
+The NFS server servera.lab.example.com exports the /share network file system. The NFS export path is servera.lab.example.com:/share.
+
+mkdir /local-share
+echo "servera.lab.example.com:/share /local-share nfs rw,sync 0 0" >> /etc/fstab
+mount /local-share
+
+**********************************************************************************************************
+
