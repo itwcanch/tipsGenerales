@@ -72,9 +72,16 @@ setfacl -m d:u:production1:rx /webcontent
 setfacl -m d:g:production:rwx /webcontent
 
 ******************************************************************************************************
+Generate SSH keys for the student user on serverb. Do not protect the private key with a passphrase.
 ssh-keygen
 ssh-copy-id student@servera
 ssh student@servera
+
+******************************************************************************************************
+On servera, change the default SELinux mode to permissive
+grep -v '^$' /etc/sysconfig/selinux | grep -v '^#'
+
+
 
 
 
