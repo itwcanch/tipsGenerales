@@ -1,0 +1,20 @@
+*** Crear particiones y volumen group ***
+lsblk
+** Crear la partición
+   parted /dev/vdb mklabel msdos
+   parted /dev/vdb mkpart primary 1GiB 3GiB (en este caso porque se piden 2GiB)
+   parted /dev/vdb set 1 lvm on
+
+** Crear logical Volumen
+
+   pvcreate /dev/vdb1
+   vgcreate extra_storage /dev/vdb1
+   
+   lvcreate -L 1GiB -n vol_home extra_storage
+   
+** Montar la partición
+
+   mkdir /home-directories
+   mkfs -t xfs /dev/extra_storage/vol_home
+   lsblk -o UUID /dev/extra_storage/vol_home
+   echo "UUID=xxxx /home-directories  xfs defaults 0 0" >> /etc/fstab
