@@ -40,6 +40,7 @@ mkswap /dev/vdc1
 lsblk -o UUID /dev/vdc1
 
 echo "UUID=xxxxx swap swap defaults 0 0" >> /etc/fstab
+swapon -a
 
 ********************************************************************************************************
 groupadd production
