@@ -18,3 +18,4 @@ lsblk
    mkfs -t xfs /dev/extra_storage/vol_home
    lsblk -o UUID /dev/extra_storage/vol_home
    echo "UUID=xxxx /home-directories  xfs defaults 0 0" >> /etc/fstab
+   mount -a
