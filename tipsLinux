@@ -81,6 +81,12 @@ ssh student@servera
 On servera, change the default SELinux mode to permissive
 grep -v '^$' /etc/sysconfig/selinux | grep -v '^#'
 
+******************************************************************************************************
+
+Configure serverb to automatically mount the home directory of the production5 user when the user logs in, using the network file system /home-directories/production5.
+This network file system is exported from servera.lab.example.com. 
+Adjust the appropriate SELinux Boolean so that production5 can use the NFS-mounted home directory on serverb after authenticating via SSH key-based authentication. 
+The production5 user's password is redhat.
 
 
 
