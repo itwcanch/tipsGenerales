@@ -1,0 +1,17 @@
+Instructions
+
+Perform the following tasks on serverb to complete the comprehensive review.
+
+Configure a new 1 GiB logical volume called vol_home in a new 2 GiB volume group called extra_storage. Use the unpartitioned /dev/vdb disk to create partitions.
+
+The logical volume vol_home should be formatted with the XFS file-system type, and mounted persistently on /home-directories.
+
+Ensure that the network file system called /share is persistently mounted on /local-share across reboot. The NFS server servera.lab.example.com exports the /share network file system. The NFS export path is servera.lab.example.com:/share.
+
+Create a new 512 MiB partition on the /dev/vdc disk to be used as swap space. This swap space must be automatically activated at boot.
+
+Create a new group called production. Create the production1, production2, production3, and production4 users. Ensure that they use the new group called production as their supplementary group.
+
+Configure your system so that it uses a new directory called /run/volatile to store temporary files. Files in this directory should be subject to time based cleanup if they are not accessed for more than 30 seconds. The octal permissions for the directory must be 0700. Make sure that you use the /etc/tmpfiles.d/volatile.conf file to configure the time based cleanup for the files in /run/volatile.
+
+Create the new directory called /webcontent. Both the owner and group of the directory should be root. The group members of production should be able to read and write to this directory. The production1 user should only be able to read this directory. These permissions should apply to all new files and directories created under the /webcontent directory.
