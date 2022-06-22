@@ -1,3 +1,27 @@
+Summary
+In this chapter, you learned:
+systemctl reboot and systemctl poweroff reboot and power down a system, respectively.
+systemctl isolate target-name.target switches to a new target at runtime.
+systemctl get-default and systemctl set-default can be used to query and set the default target.
+Use rd.break on the kernel command line to interrupt the boot process before control is handed over from the initramfs. The root file system is mounted read-only under /sysroot.
+The emergency target can be used to diagnose and fix file-system issues.
+**********************************************************************************************************************************************************************
+*** Setear password de root ***
+    rd.break
+    mount -o remount,rw /sysroot
+    chroot /sysroot
+    passwd root
+    touch /.autorelabel
+**********************************************************************************************************************************************************************
+*** The root file system is mounted read-only under
+    systemd.unit=emergency.target
+    mount
+    mount -o remount,rw /
+    mount -a
+    vim /etc/fstab  (comentar el filesystem que da problemas)
+    systemctl daemon-reload
+    systemctl reboot
+**********************************************************************************************************************************************************************
 *** Crear particiones y volumen group ***
 lsblk
 ** Crear la partición
